@@ -4,6 +4,7 @@ import com.bakaitest.smtptest.entity.EmailDetails;
 import com.bakaitest.smtptest.service.EmailService;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,8 @@ import org.springframework.stereotype.Service;
 public class EmailServiceImpl implements EmailService {
     private final JavaMailSender mailSender;
 
-//    @Value(value = "${spring.mail.username}")
-//    private String sender;
+    @Value(value = "${spring.mail.username}")
+    private String sender;
 
     @Override
     public void sendSimpleMail(EmailDetails details) {
